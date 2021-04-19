@@ -1,0 +1,704 @@
+
+3. 交易接口定义 3.1. 绑定手机验证码申请 3.1.1. 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/regphone-verifycode-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+reg_phone  绑定手机号  Y  String(11)  用户开户注册绑定手机号
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+reg_phone  绑定手机号  Y  String(11)  用户开户绑定手机号
+######
+3.2. 绑定手机验证码验证 3.2.1. 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/regphone-verifycode-verify
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一 编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+reg_phone  绑定手机号  Y  String(11)  用户开户注册绑定手机号
+verify_code  绑定手机号验证码  Y  String(20)  通过调用 3.2 接口申请的注册验证码
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(32)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+reg_phone  绑定手机号  Y  String(11)  用户开户绑定手机号
+######
+3.3. 个人用户开户 3.3.1. 开户申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/openacct-apply-individual
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编 Y  String(64)  用户在商户系统中的唯一编号，要号求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+open_sms_flag  开户成功短信通 N  String(1)  开户成功短信通知通知,Y：发送,N：不发送,默认是N,注：该功能需要商户合作银行支持，暂只满足富民银行
+risk_item  风控参数  N  String  参见‘风控参数’
+reg_phone  绑定手机号  Y  String(11)  用户开户绑定手机号
+user_name  用户名称  Y  String(85)  用户名称
+id_type  证件类型  Y  String(32)  身份证：ID_CARD
+id_no  证件号码  Y  String(64)  证件号码
+id_exp  证件有效期  Y  String(8)  证件到期日，格式：yyyyMMdd,长期有效则设置为：99991231
+id_authority  发证机关  N  String(64)  证件签发机关
+address  地址  N  String(85)  用户住址
+occupation  职业  Y  String(85)  职业
+linked_acctno  绑定银行帐号  Y  String(32)  个人用户绑定的银行卡号
+linked_phone  银行预留手机号  Y  String(11)
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+token  授权令牌  N  String(32)  授权令牌，有效期30分钟
+######
+3.3.2. 开户验证 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/openacct-verify-individual
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+token  授权令牌  Y  String(32)  申请接口返回的交易授权令牌
+verify_code  银行预留手机短信验  N  String(20)  开户申请时提供的绑卡信息中的银行证码,预留手机发送的短信验证码，用于验证开户绑卡; 商户配置无验预留手机号，则非必 填；反之，必送
+password  密码  Y  String  密码
+random_key  密码随机因子key  Y  String  通过3.13随机因子获取接口获取
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+oid_userno  ACCP系统用户编号  N  String(32)  用户注册成功后ACCP系统返回的用户编号
+user_status  用户状态  N  String(32)  参见‘用户状态列表’
+3.3.3. 开户异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  Y  String(32)  ACCP系统业务单号
+oid_userno  ACCP系统用户编号  Y  String(32)  用户注册成功后ACCP系统返回的用户编号
+user_status  用户状态  Y  String(32)  参见‘用户状态列表’
+linked_agrtno  绑卡协议号  N  String(32)  绑卡协议号
+remark  备注  N  String  开户失败时，该字段内容是失败原因
+bank_account  合作银行账号  N  String  ACCP合作银行账户,注：新网、通商、富民合作银行有效
+######
+3.4. 企业用户开户 3.4.1. 开户申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/openacct-apply-enterprise
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编 Y  String(64)  用户在商户系统中的唯一编号，要求号该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+open_sms_flag  开户成功短信通 N  String(1)  开户成功短信通知通知,Y：发送,N：不发送,默认是N,注：：该功能需要商户合作银行支持，暂只满足富民银行
+risk_item  风控参数  N  String  参见‘风控参数’
+reg_phone  绑定手机号码  Y  String(11)  用户开户绑定手机号
+user_name  用户名称  Y  String(85)  用户名称（企业用户则是企业名称，个人用户则是姓名）
+id_type  证件类型  Y  String(32)  统一社会信用代码证：UNIFIED_SOCIAL_CREDIT_CODE
+id_no  证件号码  Y  String(64)  证件号码
+id_exp  证件有效期  Y  String(8)  证件到期日，格式：yyyyMMdd,长期有效则设置为：99991231
+address  地址  Y  String(85)  企业地址
+reg_email  注册邮箱  Y  String(32) xx
+password  密码  Y  String xx
+random_key  密码随机因子  Y  String  xx
+linked_acctno  绑定银行帐号  Y  String(32)  企业用户绑定的银行帐号
+linked_bankcode  银行编码  Y  String(8)
+linked_brbankname  对公账户开户行 N  String(85)  企业用户绑定账户开户支行名称名
+linked_brbankno  对公账户开户行 Y  String(12)  企业用户开户行行号，企业用户必填号
+linked_acctname  对公账户名  Y  String(85)  企业用户必填
+legalrept_name  法定代表人姓名  Y  String(85)  法定代表人姓名
+legalrept_phone  法定代表人手机 Y  String(11)  法定代表人手机号号
+legalrept_idno  法定代表人身份 Y  String(64)  法定代表人身份证号证号
+legalrept_idexp  法定代表人身份 Y  String(8)  法定代表人身份证到期日，格式：yyyyMMdd,长期有效则设置为：99991231
+contacts_name  联系人姓名  Y  String(85)  联系人姓名
+contacts_phone  联系人手机号  Y  String(11)  联系人手机号
+scale  企业规模  N  String(170)  企业规模
+industry_code  行业代码  N  String(32)  行业代码
+registered_capital  注册资本  N  String(32)  注册资本，单位：万元
+business_scope  经营范围  N  String(170)  经营范围
+basicacct_bankcode  基本户银行编码  Y  String(8)  企业基本户银行编码
+basicacct_no  基本户账号  Y  String(32)  企业基本户帐号
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+oid_userno  ACCP系统用户编号  N  String(32)  用户注册成功后ACCP系统返回的用户编号
+user_status  用户状态  N  String(32)  参见‘用户状态列表’
+3.4.2. 异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP 系统交易单 Y  String(32)  ACCP系统业务单号号
+oid_userno  ACCP系统用户编 Y  String(32)  用户注册成功后 ACCP 系统返回的号用户编号
+user_status  用户状态  Y  String(32)  参见‘用户状态列表’
+linked_agrtno  绑卡协议号  N  String(32)  绑卡协议号
+remark  备注  N  String  审核不通过时，该字段内容是失败原因；
+bank_account  合作银行账号  N  String  ACCP合作银行账户,注：新网、通商、富民合作银行有效 企业用户绑卡打款信息
+payee_acctno  收款帐号  N  String(32)  收款帐号
+payee_name  收款账户名称  N  String(85)  收款账户名称
+payee_amt  打款金额  N  Number(8,2)  打款金额，单位：元
+payee_bankcode  打款开户行行号  N  String(8)  打款开户行行号
+payee_bankname  打款开户行行名  N  String(85)  打款开户行行名
+payee_deadline  打款截止日期  N  String(8)  打款截止日期
+######
+3.5. 个人用户新增绑卡 3.5.1. 绑卡申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/individual-bindcard-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+risk_item  风控参数  N  String  参见‘风控参数’
+linked_acctno  绑定银行帐号  Y  String(32)  个人用户绑定的银行卡号
+linked_phone  银行预留手机号  Y  String(11)  银行预留手机号
+password  密码  Y  String  密码
+random_key  密码随机因子key  Y  String  密码随机因子key
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+token  授权令牌  N  String(32)  授权令牌，有效期30分钟
+######
+3.5.2. 绑卡验证 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/individual-bindcard-verify
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+token  授权令牌  Y  String(32)
+verify_code  短信验证码  Y  String(20)
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+linked_agrtno  绑卡协议号  N  String(32)  绑卡成功的协议号
+3.5.3. 异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  Y  String(32)  ACCP系统业务单号
+action  操作类型  Y  String(32)  LINKEDACCT_IND：个人用户新增绑卡
+result  操作结果  Y  String(32)  SUCCESS
+linked_agrtno  绑卡协议号  Y  String(32)  绑卡协议号
+######
+3.6. 企业用户更换绑定账号 3.6.1. 更换申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/enterprise-changecard-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差业务参数
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+risk_item  风控参数  N  String  参见‘风控参数’
+linked_acctno  新绑定银行帐号  Y  String(32)  企业用户绑定的对公账户号
+linked_bankcode  新绑定银行编码  Y  String(8)  企业用户必填
+linked_brbankno  新绑定对公账户开 Y  String(12)  企业用户开户行行号户行号
+linked_acctname  对公账户名  Y  String(85)  企业用户绑定的对公账户名
+linked_brbankname  对公账户开户行名  N  String(85)  企业用户绑定账户开户支行名称
+password  密码  Y  String
+random_key  密码随机因子key  Y  String
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+linked_agrtno  新绑卡协议号  N  String(32)  新绑卡协议号
+3.6.2. 异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP 系统交易单 Y  String(32)  ACCP系统业务单号号
+action  操作类型  Y  String(32)  LINKEDACCT_CHANGE_ENPR：企业更换绑定银行账号,REMITTANCE_VALID_PENDING：待打款验证
+result  操作结果  Y  String(32) SUCCESS：绑卡成功
+linked_agrtno  绑卡协议号  N  String(32)  绑卡协议号
+payee_acctno  收款帐号  N  String(32)  收款帐号
+payee_name  收款账户名称  N  String(85)  收款账户名称
+payee_amt  打款金额  N  Number(8,2)  打款金额，单位：元
+payee_bankcode  打款开户行行号  N  String(8)  打款开户行行号
+payee_bankname  打款开户行行名  N  String(85)  打款开户行行名
+payee_deadline  打款截止日期  N  String(8)  打款截止日期
+######
+3.7. 个人用户解绑银行卡 3.7.1. 解绑 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/unlinkedacct-ind-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+linked_acctno  绑定银行帐号  Y  String(32)  个人用户绑定的银行卡号
+password  密码  Y  String xxx
+random_key  密码随机因子key  Y  String xxx
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+3.7.2. 异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  Y  String(32)  ACCP系统业务单号
+action  操作类型  Y  String(32)  UNLINKEDACCT_IND：个人解绑银行卡
+result  操作结果  Y  String(32)  SUCCESS
+######
+3.8. 个人用户修改预留手机号 3.8.1. 申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/change-linkedphone-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+linked_acctno  绑定银行帐号  N  String(32)  二选一，系统会验证该绑定银行账号
+linked_agrtno  绑卡协议号  N  String(32)  或绑卡协议号的有效性
+new_linked_phone  更新手机号  Y  String(11)  待更新的银行预留手机号
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+token  授权令牌  N  String(32)  授权令牌，有效期30分钟
+######
+3.8.2. 验证 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/change-linkedphone-verify
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+token  授权令牌  Y  String(32)
+verify_code_new  新手机号短信验证码  Y  String(20)  待更新的银行预留手机号的短信
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+3.8.3. 异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  Y  String(32)  ACCP系统业务单号
+result  操作结果  Y  String(32)  SUCCESS
+######
+3.9. 修改绑定手机 3.9.1. 申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/change-regphone-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+risk_item  风控参数  N  String  参见‘风控参数’
+reg_phone  绑定手机号  Y  String(11)  绑定手机号
+reg_phone_new  新绑定手机号码  Y  String(11)  新绑定手机号
+password  密码  Y  String
+random_key  密码随机因子key  Y  String
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+token  授权令牌  N  String(32)  授权令牌，有效期30分钟
+######
+3.9.2. 验证 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/change-regphone-verify
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+token  授权令牌  Y  String(32) xxx
+verify_code_new  新绑定手机号短信验  Y  String(20)  证码
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+3.9.3. 异步通知 请求地址 申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  Y  String(32)  ACCP系统业务单号
+result  操作结果  Y  String(32)  SUCCESS
+######
+3.10. 销户 3.10.1.  销户申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/cancel-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+txn_time  交易时间  Y  String(14)  商户系统交易时间格式：yyyyMMddHHmmss
+notify_url  异步通知地址  Y  String(512)  交易结果异步通知接收地址，建议HTTPS协议
+user_name  用户名称  Y  String(85)  姓名/企业名称
+id_type  证件类型  Y  String(32)  身份证：ID_CARD,统一社会信用代码证：UNIFIED_SOCIAL_CREDIT_CODE
+id_no  证件号码  Y  String(64)  证件号码
+reg_phone  绑定手机号  Y  String(11)
+password  密码  Y  String xxx
+random_key  密码随机因子key  Y  String
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+3.10.2.  异步通知 请求地址 开户申请接口上送的notify_url地址 请求参数
+参数名称  参数含义  必须  类型  参数说明
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+txn_seqno  商户唯一订单号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  Y  String(32)  ACCP系统业务单号
+result  操作结果  Y  String(32)  SUCCESS
+######
+3.11. 重置密码 3.11.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/change-password
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+risk_item  风控参数  N  String  参见‘风控参数’
+password  原密码  Y  String
+random_key  原密码随机因子key  Y  String
+password_new  新密码  Y  String
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+######
+3.12. 找回密码 3.12.1.  申请 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/find-password-apply
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+linked_acctno  绑定银行帐号  N  String(32)  个人用户绑定的银行卡号、个人用户,必填
+risk_item  风控参数  N  String  参见‘风控参数’
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  账户+分配给商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+token  授权令牌  N  String(32)
+reg_phone  接收短验手机号  N  String(11)  手机号脱敏处理，举例：183****5737
+######
+3.12.2.  验证 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/find-password-verify
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+token  授权令牌  Y  String(32)
+verify_code  短信验证码  Y  String(20)
+password  新密码  Y  String  设置的新密码
+random_key  新密码随机因子key  Y  String
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+######
+3.13. 随机因子获取 3.13.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/get-random
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳格式：yyyyMMddHHmmss,有效期 30 分钟（包含服务器之间的时间差）
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+flag_chnl  应用渠道  Y  String(10)  交易发起渠道 ANDROID IOS H5 PC
+pkg_name  APP包名  N  String(256)  flag_chnl为H5时，送商户一级域名,（支持ip）
+app_name  APP应用名  N  String(256)  flag_chnl为H5时，送商户一级域名,（支持IP）
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+random_key  随机因子key  N  String  交易成功时必填,有效期10分钟
+random_value  随机因子值  N  String(32)  交易成功时必填,有效期10分钟
+license  license  N  String(1024)  交易成功且flag_chnl为,ANDROID、IOS与H5时返回
+map_arr  映射数组  N  String(1024)  交易成功且flag_chnl为H5时返回
+rsa_public_content  连连RSA公钥  N  String(1024)  交易成功时必填
+######
+3.14. 绑卡信息查询 3.14.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-linkedacct
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+linked_acctlist  绑定银行帐号列表 N String(64) xxx
+linked_acctno  绑定银行帐号  N  String(32)  个人用户绑定的银行卡号，企业用户绑定的银行帐号
+linked_bankcode  银行编码  N  String(8)  企业用户必填
+linked_brbankno  对公账户开户行号  N  String(12)  企业用户开户行行号，企业用户必填
+linked_brbankname  对公账户开户行名  N  String(85)  企业用户绑定账户开户支行名称
+linked_phone  银行预留手机号  N  String(11)  个人用户绑卡必填
+linked_agrtno  绑卡协议号  N  String(32)  绑卡协议号
+######
+3.15. 用户信息查询 3.15.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-userinfo
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+oid_userno  ACCP系统用户编号  N  String(32)  个人用户注册成功后的用户编号
+user_status  用户状态  Y  String(32)  待激活：ACTIVATE_PENDING,待审核：CHECK_PENDING,审核通过，待打款验证：REMITTAN,CE_VALID_PENDING,正常：NORMAL,销户：CANCEL
+remark  备注  N  String  审核不通过时，该字段内容是失败原因；
+bank_account  合作银行账号  N  String  ACCP合作银行账户,注：新网、通商、富民合作银行有效
+######
+3.16. 账户信息查询 3.16.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-acctinfo
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  N  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户;user_id不送，则查询商户账户信息
+user_type  用户类型  Y  String(32)  INNERMERCHANT:商户,INNERUSER：个人用户,INNERCOMPANY：企业用户
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+oid_userno  ACCP系统用户编号  N  String(32)  个人用户注册成功后的用户编号
+bank_account  合作银行账号  N  String  ACCP合作银行账户,注：新网、通商、富民合作银行有效
+acctinfo_list  账户列表
+oid_acctno  账户号  N  String(32)  账户号
+acct_state  账户状态  N  String(32)  账户状态
+acct_type  账户类型  N  String(32)  账户类型
+amt_balcur  资金余额  N  String  单位 元
+amt_balaval  可用余额  N  String  单位 元
+amt_balfrz  冻结金额  N  String  单位 元
+amt_lastbal  昨日资金余额  N  String  单位 元
+amt_lastaval  昨日可用余额  N  String  单位 元
+amt_lastfrz  昨日冻结金额  N  String  单位 元
+######
+3.17. 资金流水查询 3.17.1.  资金流水列表查询 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-acctserial
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  N  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户;user_id不送，则查询商户资金流水信息
+user_type  用户类型  Y  String(32)  INNERMERCHANT:商户,INNERUSER：个人用户,INNERCOMPANY：企业用户
+acct_type  账户类型  Y  String(32)  账户类型
+date_start  账期开始时间  Y  String(14)  交易账期查询开始时间，必须小于等于当前时间，闭区间,格式：yyyyMMddHHmmss
+date_end  账期结束时间  Y  String(14)  交易账期查询结束时间，必须大于等于开始时间且小于等于当前时间，闭区间,格式：yyyyMMddHHmmss
+flag_dc  出入账标识  N  String(16)  账户出入账标识，DEBIT：出账,CREDIT：入账,若不填写则表示不区分出入账
+page_no  请求页码  Y  Int  表示当前请求第几页，从1开始计数
+page_size  每页记录数  Y  Int  每页最大记录数为100
+sort_type  排序方式  N  String(16)  DESC:按交易时间降序,ASC:按交易时间升序,默认DESC
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)
+ret_msg  交易结果描述  Y  String(32)
+oid_partner  商户号  Y  String(18)  ACCP系统分配给平台商户的唯一编号
+user_id  商户用户唯一编 Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+page_no  当前页码  Y  Int  表示返回结果集第几页
+total_out_amt  出账总金额  Y  String  表示当前查询条件下的出账总金额，单位：元
+total_in_amt  入账总金额  Y  String  表示当前查询条件下的入账总金额，单位：元
+total_num  结果集总数  Y  Int  表示当前查询条件下的结果集数据总数
+total_page  结果集总页数  Y  Int  total_page=(total_num/page_size)  向上取整
+acctbal_list  资金流水列表
+date_acct  账务日期  N  String(8)  交易账期格式：yyyyMMdd
+oid_acctno  账户号  N  String(32)  账户号
+jno_acct  资金流水号  N  String(20)  ACCP账务系统资金流水唯一标识
+accp_txno  ACCP系统交易单 N  String  该笔资金流水对应ACCP系统交易单号
+txn_type  交易类型  N  String  用户充值：USER_TOPUP,商户充值：MCH_TOPUP,普通消费：GENERAL_CONSUME,担保消费：SECURED_CONSUME,手续费收取：SERVICE_FEE,内部转账：INNER_FUND_EXCHA,外部转账：OUTER_FUND_EXCHA,账户提现：ACCT_CASH_OUT,担保确认：SECURED_CONFIRM
+product_code  产品编码  N  String  消费API CONSUMPTION_API,消费页面 CONSUMPTION_WEB,充值API DEPOSIT_API,充值页面 DEPOSIT_WEB,普通代发(内部)API,NORMAL_TRANSFER_ACCOUNT_API,普通代发(内部)WEB,NORMAL_TRANSFER_ACCOUNT_WEB,普通代发(外部)API,NORMAL_TRANSFER_CARD_API,普通代发(外部)WEB,NORMAL_TRANSFER_ACCOUNT_WEB,垫资代发(内部)API,FUNDS_TRANSFER_ACCOUNT_API,垫资代发(内部)WEB,FUNDS_TRANSFER_ACCOUNT_WEB,垫资代发(外部)API,FUNDS_TRANSFER_CARD_API,垫资代发(外部)WEB,FUNDS_TRANSFER_CARD_WEB,普通提现API,NORMAL_WITHDRAW_API,普通提现WEB,NORMAL_WITHDRAW_WEB,垫资提现API FUNDS_WITHDRAW_API,垫资提现WEB,FUNDS_WITHDRAW_WEB,内部调账,NTERNAL_ACCOUNT_TRANSFER,日终结转 DAILY_SETTLEMENT
+txn_time  交易时间  N  String(14)  账务系统交易时间格式：yyyyMMddHHmmss
+flag_dc  出入账标识  N  String(16)  账户出入账标识,DEBIT：出账,CREDIT：入账
+amt  出入账金额  N  String  单位元
+amt_bal  交易后余额  N  String  单位元
+memo  备注  N  String  资金流水备注
+######
+3.17.2.  资金流水详情查询 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-acctserialdetail
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  N  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户;user_id不送，则查询商户资金流水信息
+user_type  用户类型  Y  String(32)  INNERMERCHANT:商户,INNERUSER：个人用户,INNERCOMPANY：企业用户
+jno_acct  资金流水号  Y  String(20)  ACCP账务系统资金流水唯一标识
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果 Y  String(4) 代码
+ret_msg  交易结果 Y  String(32) 描述
+oid_partner  商户号  Y  String(18)  ACCP系统分配给平台商户的唯一编号
+date_acct  账务日期  N  String(8)  交易账期,格式：yyyyMMdd
+oid_acctno  账户号  N  String(32)  账户号
+jno_acct  资金流水 N  String(20)  ACCP账务系统资金流水唯一标识号
+txn_seqno  交易流水 N  String  支付类、退款类、提现类业务交易每笔交号,易商户系统唯一交易流水号
+accp_txno  ACCP 系 N  String  该笔资金流水对应ACCP系统交易单号
+txn_type  交易类型  N  String  用户充值：USER_TOPUP 商户充值：MCH_TOPUP 普通消费：GENERAL_CONSUME 担保消费：SECURED_CONSUME 手续费收取：SERVICE_FEE 内部代发：INNER_FUND_EXCHA NGE 外部代发：OUTER_FUND_EXCHA NGE 账户提现：ACCT_CASH_OUT 担保确认：SECURED_CONFIRM product_code  产品编码  N  String  消费API CONSUMPTION_API 消费页面 CONSUMPTION_WEB 充值API DEPOSIT_API 充值页面 DEPOSIT_WEB 普通代发(内部)API NORMAL_TRANSFER_ACCOUNT_API 普通代发(内部)WEB NORMAL_TRANSFER_ACCOUNT_WEB 普通代发(外部)API NORMAL_TRANSFER_CARD_API 普通代发(外部)WEB NORMAL_TRANSFER_ACCOUNT_WEB 垫资代发(内部)API FUNDS_TRANSFER_ACCOUNT_API 垫资代发(内部)WEB FUNDS_TRANSFER_ACCOUNT_WEB 垫资代发(外部)API FUNDS_TRANSFER_CARD_API 垫资代发(外部)WEB FUNDS_TRANSFER_CARD_WEB 普通提现API NORMAL_WITHDRAW_API 普通提现WEB NORMAL_WITHDRAW_WEB 垫资提现API FUNDS_WITHDRAW_API 垫资提现WEB FUNDS_WITHDRAW_WEB 内部调账 NTERNAL_ACCOUNT_TRANSFER 日终结转 DAILY_SETTLEMENT
+other_acct  对手账号  N xx
+other_acct_name  对手户名  N xx
+txn_time  交易时间  N  String(14)  账务系统交易时间格式：yyyyMMddHHmmss
+flag_dc  出入账标 N  String(16)  账户出入账标识识,DEBIT：出账 CREDIT：入账
+amt  出入账金 N  String  单位元额
+amt_bal  交易后余 N  String  单位元额
+memo  备注  N  String  资金流水备注
+######
+3.18. 交易流水结果查询 3.18.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-txn
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+txn_seqno  交易流水号  Y  String(64)  商户系统唯一交易流水号
+accp_txno  ACCP系统交易单号  N  String(32)  ACCP系统业务单号
+busi_type  业务类型  N  String(32)  业务类型
+status  状态  N  String(32)  CREATE,SUCCESS
+######
+3.19. 大额行号查询 3.19.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/query-cnapscode
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+bank_code  银行编码  Y  String(8)
+brabank_name  支行关键字  Y  String
+city_code  开户行所在市编码  Y  String(6)
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+bank_code  所属银行编码  Y  String(8)  银行编码
+card_list  行号列表
+cnaps_code  大额行号  N  String(12)  大额行号
+brabank_name  开户支行名称  N  String  支行名称
+######
+3.20. 上传照片 该接口用于上传个人用户的身份证照片及企业用户的统一社会信用代码证照片和企业法人 身份证照片。 3.20.1.  请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/upload-photos
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  String(14)  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+id_emblem  身份证国徽面  Y  String  个人用户身份证国徽面照片；企业用户法人身份证国徽面照片；Base64 编码后传输，字符编码:UTF-8;最大4M;
+id_portrait  身份证人像面  Y  String  个人用户身份证人像面照片；企业用户法人身份证人像面照片；Base64 编码后传输，字符编码:UTF-8；最大4M;
+id_filetype  身份证照片文件类 Y  String  身份证照片文件类型,支持bmp、png、jpeg、jpg、gif
+unified_code  统一社会信用代码 N  String  企业用户统一社会信用代码证照证片；企业用户必填,Base64,编码后传输，字符编码:UTF-8；最大4M;
+unified_code_filetype  统一社会信用代码 N  String  统一社会信用代码证照片文件类型,证照片文件类型  支持bmp、png、jpeg、jpg、gif
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String(4)  交易返回码
+ret_msg  交易结果描述  Y  String(32)  交易返回描述
+oid_partner  商户号  Y  String(18)  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String(64)  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+######
+3.21. 支付密码校验 请求地址
+https://accpapi.lianlianpay.com/v1/acctmgr/validate-password
+请求参数
+参数名称  参数含义  必须  类型  参数说明
+timestamp  时间戳  Y  Date  交易服务器时间戳,格式：yyyyMMddHHmmss,有效期30分钟,包含服务器之间的时间差
+oid_partner  商户号  Y  String  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+random_key  密码随机因子key  Y  String  通过3.13随机因子获取接口获取
+password  密码  Y  String  密码
+响应参数
+参数名称  参数含义  必须  类型  参数说明
+ret_code  交易结果代码  Y  String  交易返回码,0000:验证成功
+ret_msg  交易结果描述  Y  String  交易返回描述
+oid_partner  商户号  Y  String  ACCP 系统分配给平台商户的唯一编号
+user_id  商户用户唯一编号  Y  String  用户在商户系统中的唯一编号，要求该编号在商户系统能唯一标识用户
+

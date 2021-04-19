@@ -1,0 +1,7 @@
+### https://qlytestpay.qly58.shop修改为调用你本机的ip和端口，点击运行
+POST https://qlytestpay.qly58.shop/notifyCancelApplyServlet
+Content-Type: text/plain
+Signature-Type: RSA
+Signature-Data: s/9IPb+okoOnzfJJsGxmwI+k6e+V/iWrXrqzkU65ZfPP7ic8MSFMILEKLtu/SuJE8oP+O2hkQkPhG2P1pTo/HIUkHB4MUdAtCNS1wP29PCcJnPGrSDz7zVTf3d1gTb8nJEbvlKMUyLu8d487gN9PBmG/RK0bkUCUG+T4C/sOf8I=
+
+{"accp_txno":"aaaaaaaaaaaaa","oid_partner":"ooooooooooooooo","result":"SUCCESS","txn_seqno":"tttttttttttttt","user_id":"uuuuuuuuuuuuuuuuuuuu"}
