@@ -131,7 +131,7 @@ private AccpPayConfig accpPayConfig;
 3. 运行tomcat：`./target/bin/webapp`
 4. 浏览器访问：http://localhost:8080/notifyUrlXxx
 5. postman配置，并send
-    - url : https://qlytestpay.qly58.shop/notifyCancelApplyServlet (可改为你本机地址)
+    - url : https://你的域名/notifyCancelApplyServlet (可改为你本机地址)
     - headers
         - Signature-Type: RSA
         - Signature-Data:
@@ -143,7 +143,7 @@ private AccpPayConfig accpPayConfig;
 或者linux/macos下运行命令：
 
 ```
-curl --location --request POST 'https://qlytestpay.qly58.shop/notifyCancelApplyServlet' \
+curl --location --request POST 'https://你的域名/notifyCancelApplyServlet' \
 --header 'Signature-Type: RSA' \
 --header 'Signature-Data: s/9IPb+okoOnzfJJsGxmwI+k6e+V/iWrXrqzkU65ZfPP7ic8MSFMILEKLtu/SuJE8oP+O2hkQkPhG2P1pTo/HIUkHB4MUdAtCNS1wP29PCcJnPGrSDz7zVTf3d1gTb8nJEbvlKMUyLu8d487gN9PBmG/RK0bkUCUG+T4C/sOf8I=' \
 --header 'Content-Type: text/plain' \
@@ -158,7 +158,7 @@ OkHttpClient client=new OkHttpClient().newBuilder()
         MediaType mediaType=MediaType.parse("text/plain");
         RequestBody body=RequestBody.create(mediaType,"{\"accp_txno\":\"aaaaaaaaaaaaa\",\"oid_partner\":\"ooooooooooooooo\",\"result\":\"SUCCESS\",\"txn_seqno\":\"tttttttttttttt\",\"user_id\":\"uuuuuuuuuuuuuuuuuuuu\"}");
         Request request=new Request.Builder()
-        .url("https://qlytestpay.qly58.shop/notifyCancelApplyServlet")
+        .url("https://你的域名/notifyCancelApplyServlet")
         .method("POST",body)
         .addHeader("Signature-Type","RSA")
         .addHeader("Signature-Data","s/9IPb+okoOnzfJJsGxmwI+k6e+V/iWrXrqzkU65ZfPP7ic8MSFMILEKLtu/SuJE8oP+O2hkQkPhG2P1pTo/HIUkHB4MUdAtCNS1wP29PCcJnPGrSDz7zVTf3d1gTb8nJEbvlKMUyLu8d487gN9PBmG/RK0bkUCUG+T4C/sOf8I=")
