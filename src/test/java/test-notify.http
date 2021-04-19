@@ -1,5 +1,5 @@
-### https://qlytestpay.qly58.shop修改为调用你本机的ip和端口，点击运行
-POST https://qlytestpay.qly58.shop/notifyCancelApplyServlet
+# 域名需满足：https、从外网可访问
+POST https://你的域名/notifyCancelApplyServlet
 Content-Type: text/plain
 Signature-Type: RSA
 Signature-Data: s/9IPb+okoOnzfJJsGxmwI+k6e+V/iWrXrqzkU65ZfPP7ic8MSFMILEKLtu/SuJE8oP+O2hkQkPhG2P1pTo/HIUkHB4MUdAtCNS1wP29PCcJnPGrSDz7zVTf3d1gTb8nJEbvlKMUyLu8d487gN9PBmG/RK0bkUCUG+T4C/sOf8I=
