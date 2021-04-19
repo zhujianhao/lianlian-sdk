@@ -6,7 +6,8 @@ lianlianpay-accp-sdk
 
 ## 一、使用方法
 
-https://github.com/felixyin/lianlianpay-accp-sdk
+- Java版本：https://github.com/felixyin/lianlianpay-accp-sdk
+- SpringCloud版本：https://github.com/felixyin/lianlian-accp-pay-microservice
 
 ### 1.1 源码编译打包，安装到本地仓库
 
