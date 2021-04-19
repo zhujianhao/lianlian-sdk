@@ -2,12 +2,6 @@ package com.qdqtrj.pay.oldimpl;
 
 import java.io.Serializable;
 
-/**
- * @author KENT ligr@yintong.com.cn
- * @ClassName: AbstractAPIResDomain
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @date 2018年1月6日 上午11:42:09
- */
 public class AbstractAPIResDomain implements Serializable {
     private static final long serialVersionUID = 1L;
     private String ret_code; // 交易结果代码

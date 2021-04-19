@@ -6,9 +6,6 @@ import com.qdqtrj.pay.oldimpl.HttpAbstractUtil;
 import org.junit.Test;
 
 /**
- * @Author:liuwm@yintong.com.cn
- * @Descriprtion:
- * @Date: 22:44 2018/1/19
  */
 public class RandomApiOldTest extends HttpAbstractUtil {
 

@@ -2,12 +2,6 @@ package com.qdqtrj.pay.oldimpl;
 
 import java.io.Serializable;
 
-/**
- * @author KENT ligr@yintong.com.cn
- * @ClassName: AbstractAPIReqDomain
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @date 2018年1月6日 上午11:42:04
- */
 public abstract class AbstractAPIReqDomain implements Serializable {
     private static final long serialVersionUID = 1L;
     protected String timestamp;

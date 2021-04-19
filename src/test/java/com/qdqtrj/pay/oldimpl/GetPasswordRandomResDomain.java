@@ -1,10 +1,5 @@
 package com.qdqtrj.pay.oldimpl;
 
-/**
- * @Author:liuwm@yintong.com.cn
- * @Descriprtion: 获取密码随机因子
- * @Date: 12:31 2018/1/20
- */
 public class GetPasswordRandomResDomain extends AbstractAPIResDomain {
     private static final long serialVersionUID = 1L;
     /**
