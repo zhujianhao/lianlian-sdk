@@ -191,7 +191,7 @@ protected boolean businessCode(NotifyCancelApply notifyBean){
 
 ## 五、测试商户号
 
-测试商户号：2020082100288003 （测试商户号需连连支付提供）
+测试商户号：2020088888888（测试商户号需连连支付提供）
 
 加签私钥：xxx （需连连支付提供）
 
