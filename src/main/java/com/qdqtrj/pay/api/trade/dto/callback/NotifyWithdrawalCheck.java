@@ -14,6 +14,8 @@ import java.math.BigDecimal;
  */
 @Data
 public class NotifyWithdrawalCheck implements Serializable {
+
+    private static final long serialVersionUID = -7447283737843525295L;
     /**
      * oid_partner,商户号,Y,String,ACCP 系统分配给平台商户的唯一编号
      */
@@ -71,8 +73,9 @@ public class NotifyWithdrawalCheck implements Serializable {
      * 付款方信息 payerInfo
      */
     @Data
-    public static class PayerInfo {
+    public static class PayerInfo implements Serializable{
 
+        private static final long serialVersionUID = 4839874486827482784L;
         /**
          * payer_type,付款方类型,Y,String,用户：USER,平台商户：MERCHANT
          */
@@ -89,8 +92,9 @@ public class NotifyWithdrawalCheck implements Serializable {
      * 商户订单信息 orderInfo
      */
     @Data
-    public static class OrderInfo {
+    public static class OrderInfo implements Serializable{
 
+        private static final long serialVersionUID = -9151786159689435190L;
         /**
          * txn_seqno,商户交易流水号,Y,String(64),商户系统唯一交易流水号
          */
@@ -106,7 +110,6 @@ public class NotifyWithdrawalCheck implements Serializable {
         /**
          * total_amount,订单总金额,Y,Number(8,2),提现总金额，单位为元，精确到小数点后两位
          */
-        @NotBlank()
         @Digits(integer = 8, fraction = 2)
         private BigDecimal total_amount;
         /**

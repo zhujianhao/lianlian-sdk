@@ -15,6 +15,8 @@ import java.util.List;
  */
 @Data
 public class NotifyPaymentPapay implements Serializable {
+
+    private static final long serialVersionUID = -347302001949980475L;
     /**
      * oid_partner,商户号,Y,String,ACCP系统分配给平台商户的唯一编号
      */
@@ -64,7 +66,7 @@ public class NotifyPaymentPapay implements Serializable {
     /**
      * 付款方信息(组合支付场景返回付款方信息数组)payerInfo
      */
-    private PayerInfo payerInfo;
+    private List<PayerInfo> payerInfo;
     /**
      * 收款方信息(交易分账场景返回收款方信息数组)payeeInfo
      */
@@ -74,8 +76,9 @@ public class NotifyPaymentPapay implements Serializable {
      * 商户订单信息 orderInfo
      */
     @Data
-    public static class OrderInfo {
+    public static class OrderInfo implements Serializable{
 
+        private static final long serialVersionUID = -8444660435667071348L;
         /**
          * txn_seqno,商户交易流水 Y,String(64),商户系统唯一交易流水号号
          */
@@ -89,7 +92,6 @@ public class NotifyPaymentPapay implements Serializable {
         /**
          * total_amount,订单总金额,Y,Number(8,2),订单总金额，单位为元，精确到小数点后两位
          */
-        @NotBlank()
         @Digits(integer = 8, fraction = 2)
         private BigDecimal total_amount;
         /**
@@ -102,8 +104,9 @@ public class NotifyPaymentPapay implements Serializable {
      * 付款方信息(组合支付场景返回付款方信息数组)payerInfo
      */
     @Data
-    public static class PayerInfo {
+    public static class PayerInfo implements Serializable{
 
+        private static final long serialVersionUID = -4287322366586645674L;
         /**
          * payerInfo,付款方信息（组合支付场景返回付款方信息数组） N String
          */
@@ -135,7 +138,9 @@ public class NotifyPaymentPapay implements Serializable {
      * 收款方信息(交易分账场景返回收款方信息数组)payeeInfo
      */
     @Data
-    public static class PayeeInfo {
+    public static class PayeeInfo implements Serializable{
+
+        private static final long serialVersionUID = 3303875629483404846L;
         /**
          * payee_type,收款方类型,Y,String,用户：USER,平台商户：MERCHANT
          */
@@ -149,7 +154,6 @@ public class NotifyPaymentPapay implements Serializable {
         /**
          * amount,收款金额,Y,Number(8,2),收款金额，单位为元，精确到小数点后两位
          */
-        @NotBlank()
         @Digits(integer = 8, fraction = 2)
         private BigDecimal amount;
     }

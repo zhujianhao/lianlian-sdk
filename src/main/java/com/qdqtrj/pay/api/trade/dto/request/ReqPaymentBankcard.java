@@ -42,7 +42,6 @@ public class ReqPaymentBankcard implements Serializable {
     /**
      * total_amount,订单总金额,Y,Number(8,2),订单总金额，单位为元，精确到小数点后两位
      */
-    @NotBlank()
     @Digits(integer = 8, fraction = 2)
     private BigDecimal total_amount;
     /**

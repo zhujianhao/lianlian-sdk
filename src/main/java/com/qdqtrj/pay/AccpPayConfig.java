@@ -27,6 +27,11 @@ public class AccpPayConfig {
     private String payDomainServerUrl;
 
     /**
+     * pub域名地址，不包括具体接口path，调用时需要拼接具体接口path
+     */
+    private String pubDomainServerUrl;
+
+    /**
      * 请求超时时间
      * 单位：毫秒
      * 可以不传递，默认为：30秒

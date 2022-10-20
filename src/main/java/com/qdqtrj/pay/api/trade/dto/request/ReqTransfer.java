@@ -82,8 +82,8 @@ public class ReqTransfer implements Serializable {
          * txn_time,商户交易时间,Y,String(14),商户系统交易时间,格式：yyyyMMddHHmmss
          */
         @NotBlank()
-        @Length(min = 1, max = 14)
-        private String txn_time;
+        @JSONField(format = "yyyyMMddHHmmss")
+        private Date txn_time;
         /**
          * total_amount,订单总金额,Y,Number(8,2),订单总金额，单位为元，精确到小数点后两位
          */

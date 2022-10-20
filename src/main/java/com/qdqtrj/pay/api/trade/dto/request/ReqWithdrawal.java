@@ -73,6 +73,7 @@ public class ReqWithdrawal implements Serializable {
     /**
      * 商户订单信息 orderInfo
      */
+    @Data
     public static class OrderInfo {
         /**
          * txn_seqno,商户交易流水号,Y,String(64),商户系统唯一交易流水号
@@ -110,6 +111,7 @@ public class ReqWithdrawal implements Serializable {
     /**
      * 付款方信息 payerInfo
      */
+    @Data
     public static class PayerInfo {
 
         /**
@@ -134,5 +136,12 @@ public class ReqWithdrawal implements Serializable {
          * random_key,密码随机因子key,N,String,密码随机因子 key，随机因子获取接口返回，用户提现时必须
          */
         private String random_key;
+
+        /**
+         * 委托代发协议号。用户在ACCP开通的委托提现协议号。
+         * 通过用户委托协议签约接口获取。
+         * 授权免密提现时必输。该字段需要RSA公钥加密传输。
+         */
+        private String pap_agree_no;
     }
 }

@@ -278,4 +278,22 @@ public final class AccpTradePayClientImpl implements IAccpTradePayClient {
         return CommonApi.doCommonRequest(accpPayConfig, URL_QUERY_REFUND, req, ResQueryRefund.class);
     }
 
+    /**
+     *
+     * @param accpPayConfig 通用配置对象，可通过spring clould配置中心配置其子类实例
+     * @param req           ReqQueryRefund实例
+     * @return
+     * @throws AccpPayException
+     * @throws AccpReqParamException
+     */
+    @Override
+    public ResPapAgreeApply papAgreeApply(AccpPayConfig accpPayConfig, ReqPapAgreeApply req) throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, URL_PAP_AGREE_APPLY, req, ResPapAgreeApply.class);
+    }
+
+    @Override
+    public ResTransferMorepyee transferMorepyee(AccpPayConfig accpPayConfig, ReqTransferMorepyee req) throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, URL_TRANSFER_MOREPYEE, req, ResTransferMorepyee.class);
+    }
+
 }

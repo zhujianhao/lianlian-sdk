@@ -6,6 +6,7 @@ import com.qdqtrj.pay.https.request.AccpPayRequest;
 import com.qdqtrj.pay.https.request.AccpResponseResult;
 import com.qdqtrj.pay.util.AccpPayHttpClient;
 import com.qdqtrj.pay.util.SignatureUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
@@ -28,10 +29,8 @@ import java.nio.charset.StandardCharsets;
  * 采用枚举单例模式
  * @author yinbin
  */
-
+@Slf4j
 public final class AccpSignRequestImpl implements AccpPayRequest {
-
-    private final Log log = LogFactory.getLog(this.getClass());
 
     //私有化构造函数
     private AccpSignRequestImpl() {

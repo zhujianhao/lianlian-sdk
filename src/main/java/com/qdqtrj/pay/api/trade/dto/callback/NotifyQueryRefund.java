@@ -14,6 +14,8 @@ import java.math.BigDecimal;
  */
 @Data
 public class NotifyQueryRefund implements Serializable {
+
+    private static final long serialVersionUID = -3767040114330798362L;
     /**
      * oid_partner,商户号,Y,String,ACCP 系统分配给平台商户的唯一编号
      */

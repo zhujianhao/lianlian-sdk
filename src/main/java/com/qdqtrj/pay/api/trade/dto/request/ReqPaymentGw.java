@@ -41,7 +41,6 @@ public class ReqPaymentGw implements Serializable {
     /**
      * total_amount,订单总金额,Y,Number(8,2),订单总金额，单位为元，精确到小数点后两位
      */
-    @NotBlank()
     @Digits(integer = 8, fraction = 2)
     private BigDecimal total_amount;
     /**
@@ -88,6 +87,7 @@ public class ReqPaymentGw implements Serializable {
     /**
      * 付款方信息
      */
+    @Data
     public static class PayerInfo {
 
         /**
@@ -110,6 +110,7 @@ public class ReqPaymentGw implements Serializable {
         private String random_key;
     }
 
+    @Data
     public static class PayMethod {
 
         /**

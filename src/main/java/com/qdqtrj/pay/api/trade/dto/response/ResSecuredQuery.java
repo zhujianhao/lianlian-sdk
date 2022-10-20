@@ -141,7 +141,6 @@ public class ResSecuredQuery implements Serializable {
          * refund_amount,已退金额,N,Number(8,2),已退金额，单位为元，精确到小数点后两位
          */
         @Digits(integer = 8, fraction = 2)
-        @Digits(integer = 8, fraction = 2)
         private BigDecimal refund_amount;
     }
 

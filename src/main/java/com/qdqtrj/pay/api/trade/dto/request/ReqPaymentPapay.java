@@ -193,6 +193,7 @@ public class ReqPaymentPapay implements Serializable {
     /**
      * 微信附加字段 wechatInfo(非必输)
      */
+    @Data
     public static class WechatInfo {
 
         /**
@@ -219,7 +220,7 @@ public class ReqPaymentPapay implements Serializable {
          * body,订单描述,N,String(128)
          */
         @Length(min = 1, max = 128)
-        //    private String body;
+        private String body;
         /**
          * seller_id,卖家ID,N,String(28),如果该值为空，则默认为商户签约账号对应的支付宝用户ID
          */

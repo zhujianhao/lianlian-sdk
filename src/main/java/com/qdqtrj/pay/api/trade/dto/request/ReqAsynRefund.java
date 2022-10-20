@@ -1,6 +1,7 @@
 package com.qdqtrj.pay.api.trade.dto.request;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import java.util.List;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -55,7 +56,7 @@ public class ReqAsynRefund implements Serializable {
     /**
      * 原付款方式退款规则信息 refundMethods
      */
-    private RefundMethods refundMethods;
+    private List<RefundMethods> refundMethods;
 
     /**
      * 原商户订单信息 originalOrderInfo
@@ -72,7 +73,6 @@ public class ReqAsynRefund implements Serializable {
         /**
          * total_amount,订单总金额,Y,Number(8,2),订单总金额，单位为元，精确到小数点后两位
          */
-        @NotBlank()
         @Digits(integer = 8, fraction = 2)
         private BigDecimal total_amount;
     }
@@ -112,7 +112,6 @@ public class ReqAsynRefund implements Serializable {
         /**
          * refund_amount,退款总金额,Y,Number(8,2),本次需要退款的金额，不允许超过对应原收款方的收款金额,单位为元，精确到小数点后两位,原付款方式退款规则信息refundMethods
          */
-        @NotBlank()
         @Digits(integer = 8, fraction = 2)
         private BigDecimal refund_amount;
     }
@@ -131,7 +130,6 @@ public class ReqAsynRefund implements Serializable {
         /**
          * amount,退款金额,Y,Number(8,2),付款方式对应的退款金额，单位为元，精确到小数点后两位,所有的付款方式退款金额相加必须和退款总金额一致
          */
-        @NotBlank()
         @Digits(integer = 8, fraction = 2)
         private BigDecimal amount;
     }
