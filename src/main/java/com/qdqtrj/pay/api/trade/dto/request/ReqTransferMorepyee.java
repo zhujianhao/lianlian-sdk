@@ -4,6 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -38,7 +39,7 @@ public class ReqTransferMorepyee implements Serializable {
 
     private PayerInfo payerInfo;
 
-    private PayeeInfo payeeInfo;
+    private List<PayeeInfo> payeeInfo;
 
 
     @Data
