@@ -483,4 +483,11 @@ public interface IAccpManagePayClient {
     ResValidatePassword validatePassword(AccpPayConfig accpPayConfig, ReqValidatePassword req) throws AccpPayException, AccpReqParamException;
 
 
+    String URL_OPENACCT_APPLY_PAGE = "/v1/acctmgr/openacct-apply";
+
+    /**
+     *
+     */
+    ResOpenacctApplyPage openacctApplyPage(AccpPayConfig accpPayConfig, ReqOpenacctApplyPage req) throws AccpPayException, AccpReqParamException;
+
 }

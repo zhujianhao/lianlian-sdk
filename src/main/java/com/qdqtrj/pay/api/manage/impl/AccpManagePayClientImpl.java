@@ -485,4 +485,10 @@ public final class AccpManagePayClientImpl implements IAccpManagePayClient {
         return CommonApi.doCommonRequest(accpPayConfig, URL_VALIDATE_PASSWORD, req, ResValidatePassword.class);
     }
 
+    @Override
+    public ResOpenacctApplyPage openacctApplyPage(AccpPayConfig accpPayConfig,
+            ReqOpenacctApplyPage req) throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, URL_OPENACCT_APPLY_PAGE, req, ResOpenacctApplyPage.class);
+    }
+
 }
