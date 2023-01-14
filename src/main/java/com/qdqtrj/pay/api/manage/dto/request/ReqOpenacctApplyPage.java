@@ -1,7 +1,6 @@
 package com.qdqtrj.pay.api.manage.dto.request;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.qdqtrj.pay.api.manage.dto.request.ReqOpenacctApplyEnterprise.BasicAcctInfo;
 import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
@@ -100,10 +99,9 @@ public class ReqOpenacctApplyPage implements Serializable {
      * 企业经营信息 businessInfo
      */
     private BusinessInfo businessInfo;
-    /**
-     * 企业基本户信息 basicAcctInfo
-     */
-    private BasicAcctInfo basicAcctInfo;
+
+    private AccountInfo accountInfo;
+
 
     /**
      * 开户基本信息 basicInfo
