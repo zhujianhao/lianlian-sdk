@@ -70,7 +70,7 @@ public class ReqOpenacctApplyPage implements Serializable {
      * INNERUSER：个人用户
      * INNERCOMPANY：企业用户
      */
-    private String userType;
+    private String user_type;
     /**
      * open_sms_flag,开户成功短信通 N,String(1),开户成功短信通知通知,Y：发送,N：不发送,默认是N,注：：该功能需要商户合作银行支持，暂只满足富民银行
      */
