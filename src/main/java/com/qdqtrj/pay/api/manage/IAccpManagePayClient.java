@@ -486,8 +486,15 @@ public interface IAccpManagePayClient {
     String URL_OPENACCT_APPLY_PAGE = "/v1/acctmgr/openacct-apply";
 
     /**
-     *
+     * 页面开户
      */
     ResOpenacctApplyPage openacctApplyPage(AccpPayConfig accpPayConfig, ReqOpenacctApplyPage req) throws AccpPayException, AccpReqParamException;
+
+    String MODIFY_USER_LEVEL = "/v1/acctmgr/modify-user-level";
+
+    /**
+     *修改用户等级
+     */
+    ResModifyUserLevel modifyUserLevel(AccpPayConfig accpPayConfig, ReqModifyUserLevel req) throws AccpPayException, AccpReqParamException;
 
 }
