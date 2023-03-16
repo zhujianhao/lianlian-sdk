@@ -60,5 +60,10 @@ public class ResGetRandom implements Serializable {
      */
     @Length(min = 1, max = 1024)
     private String rsa_public_content;
+    /**
+     * 使用国密算法返回
+     *
+     */
+    private String sm2_key_hex;
 }
 

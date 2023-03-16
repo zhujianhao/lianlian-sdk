@@ -497,4 +497,9 @@ public interface IAccpManagePayClient {
      */
     ResModifyUserLevel modifyUserLevel(AccpPayConfig accpPayConfig, ReqModifyUserLevel req) throws AccpPayException, AccpReqParamException;
 
+    /**
+     * 上传文件
+     */
+    String DOCUMENT_UPLOAD = "/v1/documents/upload";
+    ResDocumentUpload documentUpload(AccpPayConfig accpPayConfig, ReqDocumentUpload req)throws AccpPayException, AccpReqParamException;
 }

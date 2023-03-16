@@ -497,4 +497,10 @@ public final class AccpManagePayClientImpl implements IAccpManagePayClient {
         return CommonApi.doCommonRequest(accpPayConfig, MODIFY_USER_LEVEL, req, ResModifyUserLevel.class);
     }
 
+    @Override
+    public ResDocumentUpload documentUpload(AccpPayConfig accpPayConfig, ReqDocumentUpload req)
+            throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, DOCUMENT_UPLOAD, req, ResDocumentUpload.class);
+    }
+
 }

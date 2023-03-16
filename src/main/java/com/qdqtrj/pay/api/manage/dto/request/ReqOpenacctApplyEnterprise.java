@@ -196,7 +196,7 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
      * 企业法定代表人信息 legalreptInfo
      */
     @Data
-    class LegalreptInfo {
+    public static class LegalreptInfo {
 
 
         /**
