@@ -54,4 +54,12 @@ public class ReqGetRandom implements Serializable {
      */
     @Length(min = 1, max = 256)
     private String app_name;
+
+    /**
+     * 加密算法。
+     * RSA：国际通用RSA算法
+     * SM2 ：国密算法（flag_chnl = PCH5时，必须用传SM2）
+     * 默认 RSA算法
+     */
+    private String encrypt_algorithm;
 }
