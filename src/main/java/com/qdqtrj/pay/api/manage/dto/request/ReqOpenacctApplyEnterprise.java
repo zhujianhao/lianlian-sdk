@@ -1,7 +1,6 @@
 package com.qdqtrj.pay.api.manage.dto.request;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import lombok.Data;
+import com.alibaba.fastjson.annotation.JSONField;import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -83,6 +82,8 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
      */
     private BasicAcctInfo basicAcctInfo;
 
+    private AccountInfo accountInfo;
+
     /**
      * 开户基本信息 basicInfo
      */
@@ -148,6 +149,15 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
      */
     @Data
     public static class LinkedAcctInfo {
+
+        /**
+         * 绑定账户类型。
+         * 企业对公户：ENTERPRISE_BANK_ACCT
+         * 法人银行卡：LEGALREPT_BANK_CARD
+         * 注：值为空，默认为企业对公户
+         * 行业代码为400个体工商户时允许法人银行卡。
+         */
+        private String linked_accttype;
         /**
          * linked_acctno,绑定银行帐号,Y,String(32),企业用户绑定的银行帐号
          */
@@ -174,6 +184,12 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
         @NotBlank()
         @Length(min = 1, max = 85)
         private String linked_acctname;
+
+        /**
+         * 银行预留手机号。【绑定账户类型为法人银行卡必传】
+         */
+        @Length(min = 1, max = 11)
+        private String linked_phone;
     }
 
     /**
@@ -201,6 +217,21 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
          * legalrept_idexp,法定代表人身份 Y,String(8),法定代表人身份证到期日，格式：yyyyMMdd,长期有效则设置为：99991231
          */
         private String legalrept_idexp;
+        /**
+         * 法人身份证国徽面
+         */
+        private String id_emblem;
+        /**
+         * 企业用户法人身份证人像面。
+         */
+        private String id_portrait;
+
+        /**
+         * 法人代表证件类型。
+         * 参见证件类型列表，默认ID_CARD。
+         *
+         */
+        private String legalrept_id_type;
     }
 
     /**
@@ -268,5 +299,14 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
         @NotBlank()
         @Length(min = 1, max = 32)
         private String basicacct_no;
+    }
+
+    @Data
+    public static class AccountInfo{
+
+        /**
+         * 账户类型 若该字段未上传，默认账户类型为账簿
+         */
+        private String account_type;
     }
 }
