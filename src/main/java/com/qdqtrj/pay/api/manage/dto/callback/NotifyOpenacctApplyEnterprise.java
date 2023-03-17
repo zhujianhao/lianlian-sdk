@@ -14,6 +14,8 @@ import java.math.BigDecimal;
  */
 @Data
 public class NotifyOpenacctApplyEnterprise implements Serializable {
+
+    private static final long serialVersionUID = -2238422227701183057L;
     /**
      * oid_partner,商户号,Y,String(18),ACCP 系统分配给平台商户的唯一编号
      */
@@ -69,8 +71,9 @@ public class NotifyOpenacctApplyEnterprise implements Serializable {
      * 企业用户绑卡打款信息 remittanceValidInfo(企业用户绑卡需要打款验证时返回)
      */
     @Data
-    public static class RemittanceValidInfo {
+    public static class RemittanceValidInfo implements Serializable{
 
+        private static final long serialVersionUID = -3966799082593817467L;
         /**
          * payee_acctno,收款帐号,N,String(32),收款帐号
          */
@@ -101,5 +104,22 @@ public class NotifyOpenacctApplyEnterprise implements Serializable {
          */
         @Length(min = 1, max = 8)
         private String payee_deadline;
+    }
+
+    @Data
+    public static class AccountInfo implements Serializable{
+
+        private static final long serialVersionUID = -3653721887112903366L;
+
+        /**
+         * 若该字段未上传，默认账户类型为账簿。
+         */
+        private String account_type;
+
+        private String account_level;
+
+        private String account_need_type;
+
+        private String account_need_level;
     }
 }
