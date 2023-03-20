@@ -105,6 +105,13 @@ public final class AccpManagePayClientImpl implements IAccpManagePayClient {
         return CommonApi.doCommonRequest(accpPayConfig, URL_OPENACCT_APPLY_ENTERPRISE, req, ResOpenacctApplyEnterprise.class);
     }
 
+    @Override
+    public ResOpenacctVerifyEnterprise openacctVerifyEnterprise(AccpPayConfig accpPayConfig,
+            ReqOpenAccountVerifyEnterprise req)
+            throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, URL_OPENACCT_VERIFY_ENTERPRISE, req, ResOpenacctVerifyEnterprise.class);
+    }
+
     /**
      * 3.5. 个人用户新增绑卡 3.5.1. 绑卡申请 请求地址https://accpapi.lianlianpay.com/v1/acctmgr/individual-bindcard-apply
      * 接口类型：非异步通知接口

@@ -103,6 +103,10 @@ public interface IAccpManagePayClient {
     ResOpenacctApplyEnterprise openacctApplyEnterprise(AccpPayConfig accpPayConfig, ReqOpenacctApplyEnterprise req) throws AccpPayException, AccpReqParamException;
 
 
+    String URL_OPENACCT_VERIFY_ENTERPRISE = "/v1/acctmgr/openacct-verify-enterprise";
+    ResOpenacctVerifyEnterprise openacctVerifyEnterprise(AccpPayConfig accpPayConfig,ReqOpenAccountVerifyEnterprise reqOpenAccountVerifyEnterprise)throws AccpPayException, AccpReqParamException;
+
+
     String URL_INDIVIDUAL_BINDCARD_APPLY = "/v1/acctmgr/individual-bindcard-apply";
 
     /**
