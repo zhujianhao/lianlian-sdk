@@ -1,17 +1,16 @@
 package com.qdqtrj.pay.api.manage.dto.response;
 
+import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 
 /**
  * 3.4. 企业用户开户 3.4.1. 开户申请 请求地址https://accpapi.lianlianpay.com/v1/acctmgr/openacct-apply-enterprise
  */
 @Data
-public class ResOpenacctApplyEnterprise implements Serializable {
+public class ResOpenacctVerifyEnterprise implements Serializable {
     /**
      * ret_code,交易结果代码,Y,String(4),交易返回码
      */
@@ -57,7 +56,5 @@ public class ResOpenacctApplyEnterprise implements Serializable {
      */
     @Length(min = 1, max = 32)
     private String user_status;
-
-    private String token;
 }
 
