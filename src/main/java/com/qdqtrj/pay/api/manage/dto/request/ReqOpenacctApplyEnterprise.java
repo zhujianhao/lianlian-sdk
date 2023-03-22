@@ -120,6 +120,12 @@ public class ReqOpenacctApplyEnterprise implements Serializable {
         @NotBlank()
         @Length(min = 1, max = 8)
         private String id_exp;
+
+        /**
+         * 统一社会信用代码证。证件类型是统一社会信用代码证时传。
+         * 传入文件上传接口获得的doc_id。
+         */
+        private String unified_code;
         /**
          * address,地址,Y,String(85),企业地址
          */
