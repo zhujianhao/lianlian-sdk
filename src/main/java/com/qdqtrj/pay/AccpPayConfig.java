@@ -31,6 +31,8 @@ public class AccpPayConfig {
      */
     private String pubDomainServerUrl;
 
+    private String fileDomainServerUrl;
+
     /**
      * 请求超时时间
      * 单位：毫秒
