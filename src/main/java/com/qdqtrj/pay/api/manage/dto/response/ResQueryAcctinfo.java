@@ -1,5 +1,6 @@
 package com.qdqtrj.pay.api.manage.dto.response;
 
+import java.util.List;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -48,45 +49,53 @@ public class ResQueryAcctinfo implements Serializable {
     /**
      * acctinfo_list,账户列表
      */
-    private String acctinfo_list;
-    /**
-     * oid_acctno,账户号,N,String(32),账户号
-     */
-    @Length(min = 1, max = 32)
-    private String oid_acctno;
-    /**
-     * acct_state,账户状态,N,String(32),账户状态
-     */
-    @Length(min = 1, max = 32)
-    private String acct_state;
-    /**
-     * acct_type,账户类型,N,String(32),账户类型
-     */
-    @Length(min = 1, max = 32)
-    private String acct_type;
-    /**
-     * amt_balcur,资金余额,N,String,单位 元
-     */
-    private String amt_balcur;
-    /**
-     * amt_balaval,可用余额,N,String,单位 元
-     */
-    private String amt_balaval;
-    /**
-     * amt_balfrz,冻结金额,N,String,单位 元
-     */
-    private String amt_balfrz;
-    /**
-     * amt_lastbal,昨日资金余额,N,String,单位 元
-     */
-    private String amt_lastbal;
-    /**
-     * amt_lastaval,昨日可用余额,N,String,单位 元
-     */
-    private String amt_lastaval;
-    /**
-     * amt_lastfrz,昨日冻结金额,N,String,单位 元
-     */
-    private String amt_lastfrz;
+    private List<AccountInfo> acctinfo_list;
+
+
+    @Data
+    public static class AccountInfo implements Serializable{
+
+        private static final long serialVersionUID = 3370322379225680363L;
+
+        /**
+         * oid_acctno,账户号,N,String(32),账户号
+         */
+        @Length(min = 1, max = 32)
+        private String oid_acctno;
+        /**
+         * acct_state,账户状态,N,String(32),账户状态
+         */
+        @Length(min = 1, max = 32)
+        private String acct_state;
+        /**
+         * acct_type,账户类型,N,String(32),账户类型
+         */
+        @Length(min = 1, max = 32)
+        private String acct_type;
+        /**
+         * amt_balcur,资金余额,N,String,单位 元
+         */
+        private String amt_balcur;
+        /**
+         * amt_balaval,可用余额,N,String,单位 元
+         */
+        private String amt_balaval;
+        /**
+         * amt_balfrz,冻结金额,N,String,单位 元
+         */
+        private String amt_balfrz;
+        /**
+         * amt_lastbal,昨日资金余额,N,String,单位 元
+         */
+        private String amt_lastbal;
+        /**
+         * amt_lastaval,昨日可用余额,N,String,单位 元
+         */
+        private String amt_lastaval;
+        /**
+         * amt_lastfrz,昨日冻结金额,N,String,单位 元
+         */
+        private String amt_lastfrz;
+    }
 }
 
