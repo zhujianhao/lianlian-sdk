@@ -160,6 +160,22 @@ public interface IAccpManagePayClient {
     ResEnterpriseChangecardApply enterpriseChangecardApply(AccpPayConfig accpPayConfig, ReqEnterpriseChangecardApply req) throws AccpPayException, AccpReqParamException;
 
 
+    String URL_ENTERPRISE_CHANGECARD_VERIFY = "/v1/acctmgr/enterprise-changecard-verify";
+
+    /**
+     * 企业用户绑定账户类型是法人银行卡时，需要调用此接口验证。
+     *
+     * @param accpPayConfig 通用配置对象，可通过spring clould配置中心配置其子类实例
+     * @param req           ReqEnterpriseChangecardApply实例
+     * @return ResEnterpriseChangecardApply实例
+     * @see NotifyEnterpriseChangecardApply
+     * @see AccpPayConfig
+     * @see ReqEnterpriseChangecardVerify
+     * @see ResEnterpriseChangecardVerify
+     */
+    ResEnterpriseChangecardVerify enterpriseChangecardVerify(AccpPayConfig accpPayConfig, ReqEnterpriseChangecardVerify req) throws AccpPayException, AccpReqParamException;
+
+
     String URL_UNLINKEDACCT_IND_APPLY = "/v1/acctmgr/unlinkedacct-ind-apply";
 
     /**

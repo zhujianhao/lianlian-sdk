@@ -165,6 +165,12 @@ public final class AccpManagePayClientImpl implements IAccpManagePayClient {
         return CommonApi.doCommonRequest(accpPayConfig, URL_ENTERPRISE_CHANGECARD_APPLY, req, ResEnterpriseChangecardApply.class);
     }
 
+    @Override
+    public ResEnterpriseChangecardVerify enterpriseChangecardVerify(AccpPayConfig accpPayConfig,
+            ReqEnterpriseChangecardVerify req) throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, URL_ENTERPRISE_CHANGECARD_VERIFY, req, ResEnterpriseChangecardVerify.class);
+    }
+
     /**
      * 3.7. 个人用户解绑银行卡 3.7.1. 解绑 请求地址https://accpapi.lianlianpay.com/v1/acctmgr/unlinkedacct-ind-apply
      * 接口类型：异步通知接口 响应（返回） Success 字符串则视为成功，停止通知；否则Accp支付平台会按照通知策略发起重试，直到通知机制完成。

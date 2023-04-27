@@ -1,17 +1,16 @@
 package com.qdqtrj.pay.api.manage.dto.response;
 
+import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 
 /**
  * 3.6. 企业用户更换绑定账号 3.6.1. 更换申请 请求地址https://accpapi.lianlianpay.com/v1/acctmgr/enterprise-changecard-apply
  */
 @Data
-public class ResEnterpriseChangecardApply implements Serializable {
+public class ResEnterpriseChangecardVerify implements Serializable {
     /**
      * ret_code,交易结果代码,Y,String(4),交易返回码
      */
@@ -52,10 +51,5 @@ public class ResEnterpriseChangecardApply implements Serializable {
      */
     @Length(min = 1, max = 32)
     private String linked_agrtno;
-    /**
-     * 授权令牌。绑定账户类型是法人银行卡时验证使用，有效期30分钟。
-     *
-     */
-    private String token;
 }
 
