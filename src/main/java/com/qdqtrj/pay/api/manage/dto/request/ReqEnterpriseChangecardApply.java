@@ -55,6 +55,15 @@ public class ReqEnterpriseChangecardApply implements Serializable {
      * risk_item,风控参数,N,String,参见‘风控参数’
      */
     private String risk_item;
+
+    /**
+     * 绑定账户类型。
+     * 企业对公户：ENTERPRISE_BANK_ACCT
+     * 法人银行卡：LEGALREPT_BANK_CARD
+     * 注：值为空，默认为企业对公户
+     * 行业代码为400个体工商户时允许法人银行卡。
+     */
+    private String linked_accttype;
     /**
      * linked_acctno,新绑定银行帐号,Y,String(32),企业用户绑定的对公账户号
      */
@@ -82,6 +91,11 @@ public class ReqEnterpriseChangecardApply implements Serializable {
      */
     @Length(min = 1, max = 85)
     private String linked_brbankname;
+
+    /**
+     * 银行预留手机号。【绑定账户类型为法人银行卡必传】。
+     */
+    private String linked_phone;
     /**
      * password,密码,Y,String
      */
@@ -92,4 +106,6 @@ public class ReqEnterpriseChangecardApply implements Serializable {
      */
     @NotBlank()
     private String random_key;
+
+
 }
