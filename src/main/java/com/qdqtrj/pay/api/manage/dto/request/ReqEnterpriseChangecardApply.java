@@ -67,13 +67,11 @@ public class ReqEnterpriseChangecardApply implements Serializable {
     /**
      * linked_acctno,新绑定银行帐号,Y,String(32),企业用户绑定的对公账户号
      */
-    @NotBlank()
     @Length(min = 1, max = 32)
     private String linked_acctno;
     /**
      * linked_bankcode,新绑定银行编码,Y,String(8),企业用户必填
      */
-    @NotBlank()
     @Length(min = 1, max = 8)
     private String linked_bankcode;
     /**
@@ -83,7 +81,6 @@ public class ReqEnterpriseChangecardApply implements Serializable {
     /**
      * linked_acctname,对公账户名,Y,String(85),企业用户绑定的对公账户名
      */
-    @NotBlank()
     @Length(min = 1, max = 85)
     private String linked_acctname;
     /**
@@ -99,12 +96,10 @@ public class ReqEnterpriseChangecardApply implements Serializable {
     /**
      * password,密码,Y,String
      */
-    @NotBlank()
     private String password;
     /**
      * random_key,密码随机因子key,Y,String
      */
-    @NotBlank()
     private String random_key;
 
 
