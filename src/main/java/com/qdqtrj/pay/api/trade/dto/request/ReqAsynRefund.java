@@ -58,6 +58,8 @@ public class ReqAsynRefund implements Serializable {
      */
     private List<RefundMethods> refundMethods;
 
+    private List<PyeeRefundInfo> pyeeRefundInfos;
+
     /**
      * 原商户订单信息 originalOrderInfo
      */
