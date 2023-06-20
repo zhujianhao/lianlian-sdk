@@ -133,4 +133,37 @@ public class ReqAsynRefund implements Serializable {
         @Digits(integer = 8, fraction = 2)
         private BigDecimal amount;
     }
+
+    /**
+     * 原收款方退款信息pyeeRefundInfos
+     */
+    @Data
+    public static class PyeeRefundInfo{
+
+        @NotBlank()
+        private String payee_id;
+        /**
+         * payee_type,原收款方类型,Y,String,USER：用户,MERCHANT：商户
+         */
+        @NotBlank()
+        private String payee_type;
+        /**
+         * payee_accttype,原收款方账户类型,N,String,原收款方方式为商户时必须,参见‘账户类型列表’
+         */
+        private String payee_accttype;
+
+        /**
+         * 退款金额。本次需要退款的金额，不允许超过对应原收款方的收款金额。
+         * 单位为元，精确到小数点后两位
+         */
+        @Digits(integer = 8, fraction = 2)
+        private BigDecimal payee_refund_amount;
+
+        /**
+         * 垫资标识。当原收款方金额不足时，是否由平台垫资的标识，默认:N
+         * Y:垫资
+         * N：不垫资
+         */
+        private String is_advance_pay;
+    }
 }
