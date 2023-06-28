@@ -261,6 +261,23 @@ public final class AccpTradePayClientImpl implements IAccpTradePayClient {
     }
 
     /**
+     * 3.7. 退款 3.7.1. 异步退款申请 该接口只支持普通消费交易、担保消费交易退款。 退款规则： 1.  每次发起退款只能唯一指定原消费交易一个收款方进行处理，分账类交易退款需要按照 收款方多次发起退款； 2.  支持全额或者部分退款； 3.  组合类消费交易，每次退款需要明确指定原付款方式对应的退款金额。 4.  异步退款申请在渠道真实退款结果获取之前状态为处理中，且该笔资金将被冻结 请求地址https://accpapi.lianlianpay.com/v1/txn/asyn-refund
+     * 接口类型：非异步通知接口
+     * 地址常量：IAccpTradePayClient.URL_ASYN_REFUND
+     *
+     * @param accpPayConfig 通用配置对象，可通过spring clould配置中心配置其子类实例
+     * @param req           ReqAsynRefund实例
+     * @return ResAsynRefund实例
+     * @see AccpPayConfig
+     * @see ReqAsynRefund
+     * @see ResAsynRefund
+     */
+    @Override
+    public ResAsynRefund moreRefund(AccpPayConfig accpPayConfig, ReqAsynRefund req) throws AccpPayException, AccpReqParamException {
+        return CommonApi.doCommonRequest(accpPayConfig, URL_MORE_REFUND, req, ResAsynRefund.class);
+    }
+
+    /**
      * 3.7.2. 退款结果查询 该接口提供发起提现申请后的订单查询，商户可以通过该接口主动查询提现申请订单状态， 完成下一步的业务逻辑。 请求地址https://accpapi.lianlianpay.com/v1/txn/query-refund
      * 接口类型：异步通知接口 响应（返回） Success 字符串则视为成功，停止通知；否则Accp支付平台会按照通知策略发起重试，直到通知机制完成。
      * 地址常量：IAccpTradePayClient.URL_QUERY_REFUND

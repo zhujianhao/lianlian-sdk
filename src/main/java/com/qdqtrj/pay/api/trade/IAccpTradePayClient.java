@@ -3,6 +3,7 @@ package com.qdqtrj.pay.api.trade;
 import com.qdqtrj.pay.AccpPayConfig;
 import com.qdqtrj.pay.AccpPayException;
 import com.qdqtrj.pay.AccpReqParamException;
+import com.qdqtrj.pay.api.CommonApi;
 import com.qdqtrj.pay.api.trade.dto.callback.NotifyPaymentPapay;
 import com.qdqtrj.pay.api.trade.dto.callback.NotifyQueryRefund;
 import com.qdqtrj.pay.api.trade.dto.callback.NotifyWithdrawalCheck;
@@ -35,6 +36,7 @@ public interface IAccpTradePayClient {
     String URL_QUERY_REFUND = "/v1/txn/query-refund";
     String URL_PAP_AGREE_APPLY = "/v1/txn/pap-agree-apply";
     String URL_TRANSFER_MOREPYEE = "/v1/txn/transfer-morepyee";
+    String URL_MORE_REFUND = "/v1/txn/asyn-refund";
 
     /**
      * 3.2. 充值/消费 3.2.1. 支付统一创单 商户在充值/消费交易模式一场景下使用，先通过该接口完成支付统一创单，后续根据业务 场景调用不同的支付接口完成付款。 请求地址https://accpapi.lianlianpay.com/v1/txn/tradecreate
@@ -233,6 +235,8 @@ public interface IAccpTradePayClient {
      * @see ResAsynRefund
      */
     ResAsynRefund asynRefund(AccpPayConfig accpPayConfig, ReqAsynRefund req) throws AccpPayException, AccpReqParamException;
+
+    ResAsynRefund moreRefund(AccpPayConfig accpPayConfig, ReqAsynRefund req) throws AccpPayException, AccpReqParamException;
 
     /**
      * 3.7.2. 退款结果查询 该接口提供发起提现申请后的订单查询，商户可以通过该接口主动查询提现申请订单状态， 完成下一步的业务逻辑。 请求地址https://accpapi.lianlianpay.com/v1/txn/query-refund

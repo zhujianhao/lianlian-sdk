@@ -165,6 +165,7 @@ public class ReqAsynRefund implements Serializable {
          * Y:垫资
          * N：不垫资
          */
-        private String is_advance_pay;
+        @Digits(integer = 8, fraction = 2)
+        private BigDecimal is_advance_pay;
     }
 }
