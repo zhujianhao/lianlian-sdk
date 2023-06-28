@@ -36,7 +36,7 @@ public interface IAccpTradePayClient {
     String URL_QUERY_REFUND = "/v1/txn/query-refund";
     String URL_PAP_AGREE_APPLY = "/v1/txn/pap-agree-apply";
     String URL_TRANSFER_MOREPYEE = "/v1/txn/transfer-morepyee";
-    String URL_MORE_REFUND = "/v1/txn/asyn-refund";
+    String URL_MORE_REFUND = "/v1/txn/more-payee-refund";
 
     /**
      * 3.2. 充值/消费 3.2.1. 支付统一创单 商户在充值/消费交易模式一场景下使用，先通过该接口完成支付统一创单，后续根据业务 场景调用不同的支付接口完成付款。 请求地址https://accpapi.lianlianpay.com/v1/txn/tradecreate
