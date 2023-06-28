@@ -158,8 +158,7 @@ public class ReqAsynRefund implements Serializable {
          * 退款金额。本次需要退款的金额，不允许超过对应原收款方的收款金额。
          * 单位为元，精确到小数点后两位
          */
-        @Digits(integer = 8, fraction = 2)
-        private BigDecimal payee_refund_amount;
+        private String payee_refund_amount;
 
         /**
          * 垫资标识。当原收款方金额不足时，是否由平台垫资的标识，默认:N
